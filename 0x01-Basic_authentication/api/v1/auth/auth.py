@@ -22,7 +22,8 @@ class Auth():
         return False
 
     def authorization_header(self, request=None) -> str:
-        """ Method that returns the value of the Authorization header in the request
+        """ Method that returns the value of the Authorization header
+        in the request
 
         Args:
             request ([type], optional): The request. Defaults to None.
