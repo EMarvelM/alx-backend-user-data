@@ -6,6 +6,7 @@ from typing import List, TypeVar
 
 
 class Auth():
+    """ Class that contains the methods that will be implemented """
     def __init__(self) -> None:
         """ Constructor method
         """
