@@ -1,4 +1,4 @@
-#!/usr/binv/env python3
+#!/usr/bin/env python3
 from flask import request
 from typing import List, TypeVar
 
