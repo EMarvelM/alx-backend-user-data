@@ -91,3 +91,4 @@ class DB:
             else:
                 setattr(user, i, j)
         self._session.commit()
+        return None
