@@ -13,11 +13,11 @@ from sqlalchemy.exc import InvalidRequestError
 
 
 class DB:
-    """DB class
+    """ DB class
     """
 
     def __init__(self) -> None:
-        """Initialize a new DB instance
+        """ Initialize a new DB instance
         """
         self._engine = create_engine("sqlite:///a.db", echo=True)
         Base.metadata.drop_all(self._engine)
@@ -26,7 +26,7 @@ class DB:
 
     @property
     def _session(self) -> Session:
-        """Memoized session object
+        """ Memoized session object
         """
         if self.__session is None:
             DBSession = sessionmaker(bind=self._engine)
@@ -34,7 +34,14 @@ class DB:
         return self.__session
 
     def add_user(self, email: str, hashed_password: str) -> User:
-        """
+        """ Add a new user to the database
+
+        Args:
+            email (str): email
+            hashed_password (str): hashed password
+
+        Returns:
+            User: User object
         """
         user = User()
         user.email = email
@@ -48,6 +55,15 @@ class DB:
         return user
 
     def find_user_by(self, *args, **kwargs) -> User:
+        """ Find a user by a given attribute
+
+        Args:
+            *args: arguments
+            **kwargs: keyword arguments
+
+        Returns:
+            User: User object
+        """
         try:
             result = self.__session.query(User).filter_by(**kwargs).first()
             if not hasattr(result, "id"):
