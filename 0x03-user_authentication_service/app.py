@@ -15,17 +15,17 @@ def home():
     return jsonify({"message": "Bienvenue"})
 
 
-app.route("/users", strict_slashes=False, methods=["POST"])
+@app.route("/users", strict_slashes=False, methods=["POST"])
 def users():
     """ Route to register a user
     """
     data = request.form
-    email = data.get("name")
+    email = data.get("email")
     password = data.get("password")
     if email and password:
         try:
             AUTH.register_user(email, password)
-            return jsonify({"email": email, "message": "user created"}), 400
+            return jsonify({"email": email, "message": "user created"})
         except ValueError:
             return jsonify({"message": "email already registered"}), 400
 
