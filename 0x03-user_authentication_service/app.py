@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+""" Module for basic Flask app
+"""
 from flask import Flask, jsonify
 
 app = Flask(__name__)
@@ -5,6 +8,8 @@ app = Flask(__name__)
 
 @app.route("/", strict_slashes=False)
 def home():
+    """ Route for the home page
+    """
     return jsonify({"message": "Bienvenue"})
 
 
