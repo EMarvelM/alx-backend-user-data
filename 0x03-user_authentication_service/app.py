@@ -7,6 +7,7 @@ from auth import Auth
 app = Flask(__name__)
 AUTH = Auth()
 
+
 @app.route("/", strict_slashes=False)
 def home():
     """ Route for the home page
@@ -16,6 +17,8 @@ def home():
 
 app.route("/users", strict_slashes=False, methods=["POST"])
 def users():
+    """ Route to register a user
+    """
     data = request.form
     email = data.get("name")
     password = data.get("password")
