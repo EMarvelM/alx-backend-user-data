@@ -36,7 +36,6 @@ class Auth:
             if email and password:
                 hashed_password = _hash_password(password)
                 return self._db.add_user(email, hashed_password)
-                
 
 
 def _hash_password(password: str) -> bytes:
