@@ -64,7 +64,7 @@ class DB:
             User: User object
         """
         try:
-            result = self.__session.query(User).filter_by(**kwargs).first()
+            result = self._session.query(User).filter_by(**kwargs).first()
             if not hasattr(result, "id"):
                 raise NoResultFound("NoResultFound")
             return result
