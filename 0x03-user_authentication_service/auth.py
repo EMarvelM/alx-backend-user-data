@@ -122,6 +122,7 @@ class Auth:
             )
         except (NoResultFound, InvalidRequestError):
             raise ValueError
+        return None
 
 
 def _generate_uuid() -> str:
