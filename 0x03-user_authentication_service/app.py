@@ -32,7 +32,9 @@ def users():
 
 @app.route("/sessions", strict_slashes=False, methods=["POST"])
 def login():
-    """ 
+    """ Route create a new session for the user, store it the session ID as a
+    cookie with key "session_id" on the response and return a JSON payload of
+    the form.
     """
     data = request.form
     email = data.get("email")
