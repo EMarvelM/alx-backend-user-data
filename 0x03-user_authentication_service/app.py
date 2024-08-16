@@ -61,7 +61,7 @@ def logout():
         redirect: to the home page
     """
     session_id = request.cookies.get("session_id", None)
-    
+
     if session_id:
         user = AUTH.get_user_from_session_id(session_id)
         if user:
