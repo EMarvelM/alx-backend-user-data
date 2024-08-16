@@ -53,7 +53,7 @@ def login():
         return abort(400)
 
 
-@app.route("/logout", strict_slashes=False, methods=["DELETE"])
+@app.route("/sessions", strict_slashes=False, methods=["DELETE"])
 def logout():
     """ Route to destroy the session of the user and redirect to the home page
 
