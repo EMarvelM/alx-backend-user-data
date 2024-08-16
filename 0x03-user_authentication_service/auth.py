@@ -112,6 +112,8 @@ class Auth:
         Returns:
             None
         """
+        if not reset_token or not password:
+            raise ValueError
         try:
             user = self._db.find_user_by(reset_token=reset_token)
             hashed_password = _hash_password(password)
