@@ -120,7 +120,9 @@ class Auth:
                 user.id, hashed_password=_hash_password(password),
                 reset_token=None
             )
-        except (NoResultFound, InvalidRequestError):
+        except NoResultFound:
+            raise ValueError
+        except InvalidRequestError:
             raise ValueError
         return None
 
