@@ -45,8 +45,11 @@ def login():
             res = make_response(jsonify({"email": email, "message": "logged in"}))
             if session_id:
                 res.set_cookie("session_id", session_id)
+                return res
         else:
             return abort(401)
+    else:
+        return abort(400)
 
 
 if __name__ == "__main__":
