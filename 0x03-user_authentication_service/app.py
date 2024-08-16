@@ -55,8 +55,13 @@ def login():
 
 @app.route("/logout", strict_slashes=False, methods=["DELETE"])
 def logout():
-    cookie = request.cookies
-    session_id = cookie.get("session_id")
+    """ Route to destroy the session of the user and redirect to the home page
+
+    Returns:
+        redirect: to the home page
+    """
+    session_id = request.cookies.get("session_id", None)
+    
     if session_id:
         user = AUTH.get_user_from_session_id(session_id)
         if user:
@@ -65,7 +70,7 @@ def logout():
         else:
             return abort(403)
     else:
-        return abort(400)
+        return abort(403)
 
 
 if __name__ == "__main__":
