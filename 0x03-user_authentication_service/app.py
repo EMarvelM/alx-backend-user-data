@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ Module for basic Flask app
 """
-from flask import Flask, jsonify, request, abort, make_response, redirect, url_for
+from flask import Flask, jsonify, request, abort, make_response, redirect
 from auth import Auth
 
 app = Flask(__name__)
@@ -55,13 +55,13 @@ def login():
 
 @app.route("/logout", strict_slashes=False, methods=["DELETE"])
 def logout():
-    cookie = request.cookie
+    cookie = request.cookies
     session_id = cookie.get("session_id")
     if session_id:
         user = AUTH.get_user_from_session_id(session_id)
         if user:
             AUTH.destroy_session(user.id)
-            return redirect(url_for('home'))
+            return redirect('/')
         else:
             return abort(403)
     else:
